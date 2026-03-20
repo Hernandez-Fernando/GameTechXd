@@ -1,0 +1,99 @@
+.card {
+    // min-width: 25%;
+    // max-width: 28.5rem;
+    border-radius: 10px;
+    margin-right: 20px;
+    flex: 0 0 285px;
+
+    
+    &-image {
+        width: 100%;
+
+        img {
+            width: 100%;
+        }
+    }
+    
+    &-body {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    &-title {
+        font-size: 2.4rem;
+        color: var(--color-white);
+        font-weight: 400;
+        margin-bottom: 10px;
+    }
+
+    &-description {
+        color: var(--color-grey);
+        margin-bottom: 10px;
+        font-size: 1.6rem;
+    }
+    &-link {
+        color: var(--color-accent);
+        text-decoration: none;
+        font-size: 1.6rem;
+    }
+}
+
+.header-card {
+    // min-width: 25%;
+    // max-width: 28.5rem;
+    // border-radius: 10px;
+    // margin-right: 20px;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: flex-end;
+    // position: relative;
+    // z-index: 3;
+    margin-top: 4rem;
+    flex: 0 0 285px;
+    margin-right: 2rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    transform: translateY(-10px);
+    
+    &> * {
+        z-index: 3;
+    }
+
+
+    &::before {
+        content: '';
+        // background: rgb(2,0,36);
+        background: linear-gradient(135deg, rgba(255,71,109,1) 0%, rgba(213,74,145,1) 20%, rgba(156,85,159,1) 50%, rgba(57,84,123,1) 100%);
+        // position: absolute;
+        // top: -5px;
+        // left: -5px;
+        // width: calc(100% + 10px);
+        // height: calc(100% + 10px);
+        // z-index: 1;
+        // border-radius: 10px;
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        width: calc(100% + 10px);
+        height: calc(100% + 10px);
+        z-index: 1;
+        border-radius: 12px;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--color-primary);
+        z-index: 2;
+        border-radius: 8px;
+    }
+}

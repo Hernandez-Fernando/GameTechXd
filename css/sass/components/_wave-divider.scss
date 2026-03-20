@@ -1,0 +1,65 @@
+.wave-divider {
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.wave-divider svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 120px;
+    transform: rotateY(180deg);
+}
+
+.wave-divider .shape-fill {
+    fill: #151B29;
+}
+
+
+// Footer Wave
+.custom-shape-divider-bottom-1642982198 {
+    // position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-bottom-1642982198 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 150px;
+}
+
+.custom-shape-divider-bottom-1642982198 .shape-fill {
+    fill: #8B68FF;
+}
+
+.custom-shape-divider-bottom-1642982198 .wave-secondary .shape-fill {
+    fill: var(--color-secondary);
+}
+
+
+
+// Single
+.custom-shape-divider-top-1773538585 {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1773538585 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 150px;
+}
+
+.custom-shape-divider-top-1773538585 .shape-fill {
+    fill: var(--color-primary);
+}
