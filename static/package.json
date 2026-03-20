@@ -10,9 +10,10 @@
     "sass": "^1.97.3"
   },
   "scripts": {
-    "watch:sass": "sass css/sass/main.scss css/style.css -w",
+    "watch:sass": "sass css/sass/main.scss ../style.css -w",
+    "duplicate:sass": "sass css/sass/main.scss css/style.css -w",
     "devserver": "live-server",
-    "start": "npm-run-all --parallel devserver watch:sass",
+    "start": "npm-run-all --parallel devserver watch:sass duplicate:sass",
     "compile:sass": "sass css/sass/main.scss ../css/style.comp.css",
     "concat:css": "concat -o css/style.concat.css css/icon-font.css css/style.comp.css",
     "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' css/style.concat.css -o css/style.prefix.css",
