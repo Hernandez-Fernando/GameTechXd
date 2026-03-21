@@ -3,22 +3,38 @@
         <section class="banner">
             <div class="container">
                 <div class="banner__grid">
-                <div class="trending__card" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('img/gow.jpg.webp');">
+                    <?php $main_featured = get_featured_posts('main', 1);
+
+                    if ($main_featured->have_posts()) :
+                        while ($main_featured->have_posts()) : $main_featured->the_post(); ?>
+                <div class="trending__card" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('<?php echo get_the_post_thumbnail_url(); ?>');">
                             <div class="card__categories"><ul class="card__catlist"><li class="card__catitem"><a href="" class="card__catlink">Articles</a></li><li class="card__catitem"><a href="" class="card__catlink">Opinion</a></li></ul></div>
                             <div class="card__text-box">
-                            <div class="card__title"><h1>God of War Trilogy Remake Announced for PS5</h1></div>
-                            <div class="card__description"><p>Sony Santa Monica Studio has announced God of War Trilogy Remake for PS5.
-It's all in the title, really. This is a full remake of all three original God of War games...</p></div>
-</div>
-                </div>
-                    <div class="secondary__card" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('img/console.jpg.webp');">
-                            <div class="card__categories"><ul class="card__catlist"><li class="card__catitem"><a href="" class="card__catlink">Articles</a></li><li class="card__catitem"><a href="" class="card__catlink">Opinion</a></li></ul></div>
-                            <div class="card__title"><h1>Do we need a PS6 or New Xbox Yet?</h1></div>
-                </div>
-                    <div class="secondary__card" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('img/doom.jpg');">
-                            <div class="card__categories"><ul class="card__catlist"><li class="card__catitem"><a href="" class="card__catlink">Reviews</a></li><li class="card__catitem"><a href="" class="card__catlink">Games</a></li></ul></div>
-                            <div class="card__title"><h1>Doom: The Dark Ages - New DLC</h1></div>
+                            <div class="card__title"><h1><?php the_title(); ?></h1></div>
+                            <div class="card__description"><p><?php the_excerpt(); ?></p></div>
                     </div>
+                </div>
+                <?php 
+                    endwhile;
+                endif;
+                wp_reset_postdata(); 
+                
+                $secondary_featured = get_featured_posts('secondary', 2);
+
+                if ($secondary_featured->have_posts()) :
+                    while ($secondary_featured->have_posts()) : $secondary_featured->the_post();
+                ?>
+                    <div class="secondary__card" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('<?php echo get_the_post_thumbnail_url(); ?>');">
+                            <div class="card__categories"><ul class="card__catlist"><li class="card__catitem"><a href="" class="card__catlink">Articles</a></li><li class="card__catitem"><a href="" class="card__catlink">Opinion</a></li></ul></div>
+                            <div class="card__title"><h1><?php the_title(); ?></h1></div>
+                </div>
+
+                <?php 
+                    endwhile;
+                endif;
+                
+                wp_reset_postdata(); ?>
+                    
                 </div>
             </div>
         </section>
@@ -28,19 +44,26 @@ It's all in the title, really. This is a full remake of all three original God o
                 <section class="feed">
                     <h1 class="feed__header">Recent Posts</h1>
 
-                    <?php while(have_posts()) { 
-                        the_post();
+                    <?php 
+                        $blogPosts = new WP_Query(array(
+                            'post_type' => 'post'
+                        ));
+                    
+                    while($blogPosts->have_posts()) { 
+                        $blogPosts->the_post();
                         ?>
-
+                    
                     <div class="post__card">
+                        <a href="<?php the_permalink(); ?>">
                         <div class="card__thumbnail"  style="background-image: url('<?php echo get_the_post_thumbnail_url(); ?>');"></div>
+                        </a>
                         <div class="card__body">
                             <div class="card__categories"><ul class="card__catlist"><li class="card__catitem"><a href="" class="card__catlink">News</a></li><li class="card__catitem"><a href="" class="card__catlink">Ps5</a></li><li class="card__catitem"><a href="" class="card__catlink">Trailers</a></li></ul></div>
-                            <div class="card__title"><h1><?php the_title(); ?></h1></div>
+                            <div class="card__title"><h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1></div>
                             <div class="card__description"><p><?php the_excerpt(); ?></p></div>
                         </div>
-                </div>
-                <?php }; ?>
+                </div></a>
+                <?php }; wp_reset_postdata(); ?>
                 
                 <a href="#" class="loadmore__button">Load More Articles</a>
                 </section>

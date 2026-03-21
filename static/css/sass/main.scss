@@ -833,6 +833,16 @@ $secondary: #151B29;
         @media screen and (min-width: 30rem) and (max-width: 67rem) {
             font-size: 1rem; 
         }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color .5s ease;
+
+            &:hover, &:active {
+                color: var(--color-cta);
+            }
+        }
     }
 
     .card__description {

@@ -11,24 +11,24 @@ function gametechxd_features() {
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
     add_theme_support('excerpt');
-    add_post_type_support( 'review', 'excerpt' );
+    // add_post_type_support( 'review', 'excerpt' );
 }
 
 add_action('setup_theme', 'gametechxd_features');
 
 function gametechxd_post_types() {
-    register_post_type('news', array(
-    'public' => true,
-    'show_in_rest' => true,
-    'labels' => array(
-      'name' => 'News',
-      'add_new_item' => 'Create a News',
-      'edit_item' => 'Edit New',
-      'all_items' => 'All News',
-      'singular_name' => 'New'
-    ),
-    'menu_icon' => 'dashicons-media-document'
-  ));
+//     register_post_type('news', array(
+//     'public' => true,
+//     'show_in_rest' => true,
+//     'labels' => array(
+//       'name' => 'News',
+//       'add_new_item' => 'Create a News',
+//       'edit_item' => 'Edit New',
+//       'all_items' => 'All News',
+//       'singular_name' => 'New'
+//     ),
+//     'menu_icon' => 'dashicons-media-document'
+//   ));
 
     register_post_type('affiliate', array(
         'public' => true,
@@ -43,18 +43,18 @@ function gametechxd_post_types() {
         'menu_icon' => 'dashicons-admin-links'
     ));
 
-    register_post_type('review', array(
-        'public' => true,
-        'show_in_rest' => true,
-        'labels' => array(
-            'name' => 'Reviews',
-            'add_new_item' => 'Create a Review',
-            'edit_item' => 'Edit Review',
-            'all_items' => 'All Reviews',
-            'singular_name' => 'Review'
-        ),
-        'menu_icon' => 'dashicons-star-half'
-    ));
+    // register_post_type('review', array(
+    //     'public' => true,
+    //     'show_in_rest' => true,
+    //     'labels' => array(
+    //         'name' => 'Reviews',
+    //         'add_new_item' => 'Create a Review',
+    //         'edit_item' => 'Edit Review',
+    //         'all_items' => 'All Reviews',
+    //         'singular_name' => 'Review'
+    //     ),
+    //     'menu_icon' => 'dashicons-star-half'
+    // ));
 
     register_post_type('guide', array(
         'public' => true,
@@ -71,4 +71,19 @@ function gametechxd_post_types() {
 
 }
 
-add_action('init', 'gametechxd_post_types'); 
+add_action('init', 'gametechxd_post_types');
+
+// Featuring Posts
+function get_featured_posts($position, $count) {
+    return new WP_Query(array(
+        'post_type' => 'post',
+        'posts_per_page' => $count,
+        'meta_query' => array(
+            array(
+                'key' => 'featured_position',
+                'value' => $position,
+                'compare' => '='
+            )
+        )
+    ));
+}
