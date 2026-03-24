@@ -6,15 +6,109 @@ function gametechxd_files() {
 }
 
 add_action('wp_enqueue_scripts', 'gametechxd_files');
+add_action('login_enqueue_scripts', 'gametechxd_files');
 
 function gametechxd_features() {
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
     add_theme_support('excerpt');
-    // add_post_type_support( 'review', 'excerpt' );
+    add_post_type_support( 'guide', 'excerpt' );
 }
 
 add_action('setup_theme', 'gametechxd_features');
+
+
+// Customize Login Screen
+function customLogin() {
+    return esc_url(site_url('/'));
+}
+
+add_filter('login_headerurl', 'customLogin');
+
+function gametechxd_login_logo() { ?>
+    <style type="text/css">
+        #login h1 a {
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/img/gametech-logo.png);
+            height: 140px;
+            width: 320px;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+    </style>
+<?php }
+
+add_action( 'login_enqueue_scripts', 'gametechxd_login_logo' );
+
+// Request First and Last Name
+add_action( 'register_form', 'myplugin_register_form' );
+function myplugin_register_form() {
+
+    $first_name = ( ! empty( $_POST['first_name'] ) ) ? trim( $_POST['first_name'] ) : '';
+    $last_name = ( ! empty( $_POST['last_name'] ) ) ? trim( $_POST['last_name'] ) : '';
+
+        ?>
+        <p>
+            <label for="first_name"><?php _e( 'First Name', 'mydomain' ) ?><br />
+                <input type="text" name="first_name" id="first_name" class="input" value="<?php echo esc_attr( wp_unslash( $first_name ) ); ?>" size="25" /></label>
+        </p>
+
+        <p>
+            <label for="last_name"><?php _e( 'Last Name', 'mydomain' ) ?><br />
+                <input type="text" name="last_name" id="last_name" class="input" value="<?php echo esc_attr( wp_unslash( $last_name ) ); ?>" size="25" /></label>
+        </p>
+
+        <?php
+    }
+
+    //2. Add validation. In this case, we make sure first_name and last_name is required.
+    add_filter( 'registration_errors', 'myplugin_registration_errors', 10, 3 );
+    function myplugin_registration_errors( $errors, $sanitized_user_login, $user_email ) {
+
+        if ( empty( $_POST['first_name'] ) || ! empty( $_POST['first_name'] ) && trim( $_POST['first_name'] ) == '' ) {
+            $errors->add( 'first_name_error', __( '<strong>ERROR</strong>: You must include a first name.', 'mydomain' ) );
+        }
+        if ( empty( $_POST['last_name'] ) || ! empty( $_POST['last_name'] ) && trim( $_POST['last_name'] ) == '' ) {
+            $errors->add( 'last_name_error', __( '<strong>ERROR</strong>: You must include a last name.', 'mydomain' ) );
+        }
+        return $errors;
+    }
+
+    //3. Finally, save our extra registration user meta.
+    add_action( 'user_register', 'myplugin_user_register' );
+    function myplugin_user_register( $user_id ) {
+        if ( ! empty( $_POST['first_name'] ) ) {
+            update_user_meta( $user_id, 'first_name', trim( $_POST['first_name'] ) );
+            update_user_meta( $user_id, 'last_name', trim( $_POST['last_name'] ) );
+        }
+    }
+
+
+
+
+// Redirect Subscribers to HomePage
+add_action('admin_init', 'redirectHomePage');
+
+function redirectHomePage() {
+    $currentUser = wp_get_current_user();
+
+    if(count($currentUser->roles) == 1 AND $currentUser->roles[0] == 'subscriber') {
+        wp_redirect(site_url('/'));
+        exit;
+    }
+}
+
+// Hide Admin Bar for Subscribers
+add_action('wp_loaded', 'hideAdminBar');
+
+function hideAdminBar() {
+    $currentUser = wp_get_current_user();
+
+    if(count($currentUser->roles) == 1 AND $currentUser->roles[0] == 'subscriber') {
+        show_admin_bar(false);
+    }
+}
+
+// Custom Post Types
 
 function gametechxd_post_types() {
 //     register_post_type('news', array(
@@ -66,7 +160,8 @@ function gametechxd_post_types() {
             'all_items' => 'All Tips & Guides',
             'singular_name' => 'Guide'
         ),
-        'menu_icon' => 'dashicons-games'
+        'menu_icon' => 'dashicons-games',
+        'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments')
     ));
 
 }
@@ -87,3 +182,5 @@ function get_featured_posts($position, $count) {
         )
     ));
 }
+
+

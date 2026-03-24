@@ -271,6 +271,11 @@ $secondary: #151B29;
             @media screen and (max-width: 30rem) {
                 font-size: 1.6rem;
             }
+
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
         }
 
         .card__description p {
@@ -291,7 +296,7 @@ $secondary: #151B29;
     width: 100%;
     height: 22vh;
     // max-height: 24rem;
-    padding: 1rem;
+    padding: 2rem;
     // width: 873px;
     // height: 491px;
     border-radius: 10px;
@@ -332,11 +337,16 @@ $secondary: #151B29;
 
     .card__title {
         filter: drop-shadow(2px 4px 10px rgba(0,0,0,.35)); 
-        font-size: 1.8rem; 
+        font-size: 1.2rem; 
         font-weight: 400;
 
         @media screen and (max-width: 30rem) {
             font-size: 1.4rem;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
         }
     }
 }
@@ -1156,4 +1166,265 @@ $secondary: #151B29;
            height: 2rem;
         }
     }
+}
+
+
+// Comment Section
+
+.comments__section {
+
+    .container {
+        display: flex;
+    }
+}
+
+.comment-reply-title {
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+
+    a {
+        color: var(--color-accent);
+        font-size: 1.6rem;
+    }
+
+    #cancel-comment-reply-link {
+        color: var(--color-cta);
+        margin-left: 1rem;
+    }
+}
+
+.comment-respond {
+    margin-top: 3rem;
+    margin-left: 2rem;
+}
+
+.must-log-in {
+    a {
+        color: var(--color-accent);
+    }
+}
+
+.comment-form {
+    a {
+        color: var(--color-accent);
+
+        transition: color .5s ease;
+
+            &:hover {
+                color: var(--color-cta);
+            }
+    }
+
+    .logged-in-as {
+        margin-bottom: 2rem;
+    }
+
+    &-comment {
+        textarea {
+            border: none;
+            border-radius: 10px;
+            width: 100%;
+            margin-bottom: 2rem;
+            margin-top: 1rem;
+            font-size: 1.8rem;
+            padding: 2rem;
+            font-family: 'Poppins', sans-serif;
+	        font-weight: 300;
+	        line-height: 1.3;
+            background-color: #fefefe;
+        }
+    }
+}
+
+.form-submit {
+    input {
+        border: none;
+        padding: 2rem 3rem;
+        color: var(--color-white);
+        background-color: var(--color-cta);
+        border-radius: 10px;
+        font-size: 1.6rem;
+        cursor: pointer;
+    }
+}
+
+
+
+.commentlist {
+    list-style: none;
+    .comment {
+        background-color: var(--color-primary);
+        padding: 2rem;
+        border-radius: 15px;
+        font-size: 1.6rem;
+        margin-bottom: 2rem;
+
+        .comment-meta {
+            margin-bottom: 1rem;
+            a {
+                color: var(--color-grey);
+            }
+        }
+
+        .reply {
+            a {
+                color: var(--color-accent);
+            }
+        }
+    }
+}
+
+.children {
+    list-style: none;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    
+    .fn a {
+        color: var(--color-white);
+    }
+
+    li.comment {
+        // border-left: 4px solid var(--color-accent);
+        // border-left: 4px solid var(--color-cta);
+        border-radius: 0;
+        border-left: 4px solid transparent; /* Set a transparent border to define the width */
+        border-image: linear-gradient(to bottom, rgba(255,71,109,1) 0%, rgba(213,74,145,1) 20%, rgba(156,85,159,1) 50%, rgba(57,84,123,1) 100%) 1; /* Apply the gradient */
+        border-image-slice: 1; /* Specifies that the image should be sliced into one section */
+
+    }
+}
+
+.gradient__card.comments__card {
+    justify-content: flex-start;
+}
+
+.comments__container {
+    h3 {
+        margin: 2rem 0;
+        font-size: 1.4rem;
+    }
+}
+
+
+
+
+// Login and Sign Up Forms
+#login {
+    width: 100%;
+    max-width: 35rem;
+}
+
+.login {
+
+    label {
+        color: var(--color-secondary);
+        font-size: 1.6rem;
+    }
+
+    form .input {
+        font-size: 1.8rem;
+    }
+
+    .notice {
+        // color: var(--color-secondary);
+        background-color: var(--color-primary);
+        border-left: 4px solid var(--color-accent);
+
+        a {
+            color: var(--color-accent);
+            transition: color .5s ease;
+
+            &:hover {
+                color: var(--color-cta);
+            }
+
+        }
+    }
+    
+
+    .submit {
+        
+        input {
+            background-color: var(--color-accent);
+            padding: 1rem 2rem !important;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.6rem;
+            transition: background-color .5s ease;
+
+            &:hover {
+                background-color: #4E37C5;
+            }
+        }
+    }
+
+    #nav {
+        padding: 0;
+        a {
+            color: var(--color-white);
+            font-size: 1.8rem;
+            transition: color .5s ease;
+
+            &:hover {
+                color: var(--color-cta);
+            }
+        }
+    }
+
+    #backtoblog {
+        padding: 0;
+        margin-top: 4rem;
+        a {
+            color: var(--color-grey);
+            font-size: 1.5rem;
+            transition: color .5s ease;
+
+            &:hover {
+                color: var(--color-cta);
+            }
+        }
+    }
+
+}
+
+#loginform, #registerform {
+    border-radius: 10px;
+
+    div {
+        margin-bottom: 1.5rem;
+    }
+
+    input[type="checkbox"] {
+        transform: scale(2.5);
+        margin-right: 1rem;
+    }
+}
+
+.wp-login-register, .wp-login-log-in {
+    margin-right: 1rem;
+}
+
+.wp-login-lost-password {
+    margin-left: 1rem;
+}
+
+.privacy-policy-page-link {
+
+    a {
+            color: var(--color-grey);
+            font-size: 1.5rem;
+            transition: color .5s ease;
+
+            &:hover {
+                color: var(--color-cta);
+            }
+        }
+    
+
+}
+
+#reg_passmail {
+    color: var(--color-secondary);
+    font-weight: 400;
 }

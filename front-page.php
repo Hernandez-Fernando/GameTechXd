@@ -8,9 +8,13 @@
                     if ($main_featured->have_posts()) :
                         while ($main_featured->have_posts()) : $main_featured->the_post(); ?>
                 <div class="trending__card" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('<?php echo get_the_post_thumbnail_url(); ?>');">
-                            <div class="card__categories"><ul class="card__catlist"><li class="card__catitem"><a href="" class="card__catlink">Articles</a></li><li class="card__catitem"><a href="" class="card__catlink">Opinion</a></li></ul></div>
+                            <div class="card__categories"><ul class="card__catlist">
+                            <?php $categories = get_the_category();
+                            foreach ($categories as $category) { 
+                                if($category->name !='Featuring') { ?>
+                            <li class="card__catitem"><a href="<?php echo get_category_link( $category->term_id ); ?>" class="card__catlink"><?php echo $category->name; } }?></a></li></ul></div>
                             <div class="card__text-box">
-                            <div class="card__title"><h1><?php the_title(); ?></h1></div>
+                            <div class="card__title"><h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1></div>
                             <div class="card__description"><p><?php the_excerpt(); ?></p></div>
                     </div>
                 </div>
@@ -25,8 +29,12 @@
                     while ($secondary_featured->have_posts()) : $secondary_featured->the_post();
                 ?>
                     <div class="secondary__card" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('<?php echo get_the_post_thumbnail_url(); ?>');">
-                            <div class="card__categories"><ul class="card__catlist"><li class="card__catitem"><a href="" class="card__catlink">Articles</a></li><li class="card__catitem"><a href="" class="card__catlink">Opinion</a></li></ul></div>
-                            <div class="card__title"><h1><?php the_title(); ?></h1></div>
+                            <div class="card__categories"><ul class="card__catlist">
+                            <?php $categories = get_the_category();
+                            foreach ($categories as $category) { 
+                                if($category->name !='Featuring') { ?>
+                            <li class="card__catitem"><a href="<?php echo get_category_link( $category->term_id ); ?>" class="card__catlink"><?php echo $category->name; } }?></a></li></ul></div>
+                            <div class="card__title"><h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1></div>
                 </div>
 
                 <?php 
@@ -45,8 +53,10 @@
                     <h1 class="feed__header">Recent Posts</h1>
 
                     <?php 
+                        $category_id = get_cat_ID('Featuring');
                         $blogPosts = new WP_Query(array(
-                            'post_type' => 'post'
+                            'post_type' => 'post',
+                            'category__not_in' => array($category_id)
                         ));
                     
                     while($blogPosts->have_posts()) { 
@@ -58,7 +68,11 @@
                         <div class="card__thumbnail"  style="background-image: url('<?php echo get_the_post_thumbnail_url(); ?>');"></div>
                         </a>
                         <div class="card__body">
-                            <div class="card__categories"><ul class="card__catlist"><li class="card__catitem"><a href="" class="card__catlink">News</a></li><li class="card__catitem"><a href="" class="card__catlink">Ps5</a></li><li class="card__catitem"><a href="" class="card__catlink">Trailers</a></li></ul></div>
+                            <div class="card__categories"><ul class="card__catlist">
+                            <?php $categories = get_the_category();
+                            foreach ($categories as $category) { 
+                                if($category->name !='Featuring') { ?>
+                            <li class="card__catitem"><a href="<?php echo get_category_link( $category->term_id ); ?>" class="card__catlink"><?php echo $category->name; } }?></a></li></ul></div>
                             <div class="card__title"><h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1></div>
                             <div class="card__description"><p><?php the_excerpt(); ?></p></div>
                         </div>
@@ -70,6 +84,12 @@
                 <aside class="sidebar">
                     <div class="gradient__card">
                         <h2 class="gradient__card-title">Active Poll</h2>
+                        <?php if ( function_exists( 'vote_poll' ) && ! in_pollarchive() ): ?>
+        <ul>
+            <li><?php get_poll();?></li>
+        </ul>
+        <?php display_polls_archive_link(); ?>
+<?php endif; ?>
                         <p class="gradient__card-text">What’s your most anticipated game of the year?</p>
                         <form action="" class="poll">
                             <div class="poll__group">

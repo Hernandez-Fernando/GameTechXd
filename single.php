@@ -94,10 +94,10 @@ while(have_posts()) {
                 </div>
             </div>
         </section>
-        <section class="comments_section py-medium">
+        <section class="comments__section py-medium">
             <div class="container">
                 <div class="affiliated__header">
-                    <div class="gradient__card">
+                    <div class="gradient__card comments__card">
                         <h2 class="gradient__card-title">Comments</h2>
                         <p class="gradient__card-text">Join the discussion, but remember always respect eveyones opinion.</p>
                     </div>
