@@ -802,6 +802,18 @@ $secondary: #151B29;
 
     }
 
+    .card__date {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: var(--color-grey);
+        margin-left: auto;
+        margin-right: 0 !important;
+    }
+
+    .today {
+        color: var(--color-cta);
+    }
+
     .card__categories {
         margin-bottom: 1.2rem;
 

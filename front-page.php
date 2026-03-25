@@ -61,6 +61,7 @@
                     
                     while($blogPosts->have_posts()) { 
                         $blogPosts->the_post();
+                        $publishDate = get_human_post_age();
                         ?>
                     
                     <div class="post__card">
@@ -72,7 +73,7 @@
                             <?php $categories = get_the_category();
                             foreach ($categories as $category) { 
                                 if($category->name !='Featuring') { ?>
-                            <li class="card__catitem"><a href="<?php echo get_category_link( $category->term_id ); ?>" class="card__catlink"><?php echo $category->name; } }?></a></li></ul></div>
+                            <li class="card__catitem"><a href="<?php echo get_category_link( $category->term_id ); ?>" class="card__catlink"><?php echo $category->name; } }?></a></li><li class="card__date card__catitem <?php if ($publishDate == 'Today!') echo 'today'; ?>"><?php echo $publishDate; ?></li></ul></div>
                             <div class="card__title"><h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1></div>
                             <div class="card__description"><p><?php the_excerpt(); ?></p></div>
                         </div>

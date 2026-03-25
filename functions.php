@@ -184,3 +184,40 @@ function get_featured_posts($position, $count) {
 }
 
 
+// Showing Publish Date
+function get_human_post_age($post = null) {
+    $post = get_post($post);
+
+    if (!$post) {
+        return '';
+    }
+
+    // Get dates WITHOUT time (force midnight)
+    $published_date = new DateTime(get_the_date('Y-m-d', $post));
+    $current_date   = new DateTime(current_time('Y-m-d'));
+
+    $interval = $published_date->diff($current_date);
+    $days = (int) $interval->days;
+
+    if ($days === 0) {
+        return 'Today!';
+    }
+
+    if ($days === 1) {
+        return 'Yesterday';
+    }
+
+    if ($days < 7) {
+        return $days . ' days';
+    }
+
+    if ($days < 14) {
+        return '1 week';
+    }
+
+    if ($days < 21) {
+        return '2 weeks';
+    }
+
+    return get_the_date('', $post);
+}
