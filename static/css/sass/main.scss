@@ -453,12 +453,22 @@ $secondary: #151B29;
         font-weight: 400;
         padding: 0 8rem;
         margin-top: 3rem;
+
+        @media screen and (max-width: 30rem) {
+            padding: 0 3rem;
+            font-size: 2.7rem;
+        }
     }
 
     ul {
         padding: 0 8rem;
         margin-top: 3rem;
         font-size: 2rem;
+
+        @media screen and (max-width: 30rem) {
+            padding: 0 3rem;
+            font-size: 1.8rem;
+        }
     }
 
     img {
@@ -664,6 +674,140 @@ $secondary: #151B29;
     }
 }
 
+.wp-polls-form {
+
+    .wp-polls-ul {
+        // margin: 0;
+
+        li {
+            margin-bottom: 1.8rem;
+            margin-top: 3rem;
+
+            .pollbar {
+                height: 1.7rem;
+                border: none;
+                background-color: var(--color-cta);
+                margin-bottom: 2rem;
+            }
+        }
+    }
+    p {
+        font-size: 1.8rem;
+        color: var(--color-grey);
+        margin-bottom: 3rem;
+        text-align: left;
+
+        &:nth-last-child(2) {
+            margin-bottom: 2rem;
+        }
+
+        &:last-of-type {
+            text-align: center;
+        }
+    }
+
+    label {
+        font-size: 1.8rem;
+        color: var(--color-white);
+        position: absolute;
+        padding-left: 3.8rem;
+        cursor: pointer;
+        margin-top: -3rem;
+    }
+
+    // input[type="radio"] {
+    //     display: none;
+    // }
+
+    input[type="radio"] {
+  /* Hide the native radio button but keep it accessible */
+  -webkit-appearance: none; /* For iOS < 15 */
+  appearance: none;
+  background-color: var(--color-primary);
+  margin: 0; /* Remove default margin */
+  
+  /* Set basic size and shape */
+  width: 3rem;
+  height: 3rem;
+  border: 3px solid var(--color-accent);
+  border-radius: 50%; /* Creates a circle */
+  
+  /* Center the custom dot */
+  display: grid;
+  place-content: center;
+}
+
+/* Style the inner dot using ::before */
+input[type="radio"]::before {
+  content: "";
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 50%;
+  transform: scale(0); /* Hide the dot by default */
+  transition: 120ms transform ease-in-out; /* Add a smooth animation */
+  box-shadow: inset 1em 1em var(--color-accent); /* Use box-shadow for color that prints well */
+}
+
+/* Show the dot when the input is checked */
+input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+
+    input[type="button"] {
+        border: none;
+        color: var(--color-white);
+        background-color: var(--color-cta);
+        border-radius: 5px;
+        padding: 1.5rem;
+        margin-top: 2rem;
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+        width: 100%;
+        cursor: pointer;
+    }
+
+    p a {
+        color: var(--color-accent);
+        font-size: 1.6rem;
+        text-decoration: none;
+
+    }
+
+    .wp-polls .pollbar {
+        height: 2rem;
+        border: none;
+        background-color: var(--color-cta);
+    }
+
+}
+
+.wp-polls-ans {
+    .wp-polls-ul {
+        margin-top: 2rem;
+        margin-left: 0;
+
+        li {
+            margin-bottom: 1.8rem;
+            margin-top: 3rem;
+            font-size: 1.6rem;
+
+            .pollbar {
+                height: 1.7rem;
+                border: none;
+                background-color: var(--color-cta);
+                margin-bottom: 2rem;
+            }
+        }
+    }
+
+    p {
+        margin-bottom: 2rem;
+        a {
+            color: var(--color-accent);
+        }
+    }
+}
 
 // Newsletter
 .newsletter {
@@ -774,6 +918,7 @@ $secondary: #151B29;
     padding: 0;
     // width: 873px;
     max-height: 24rem;
+    min-height: 24rem;
     border-radius: 10px;
     background-color: var(--color-secondary);
     display: grid;
@@ -1194,7 +1339,37 @@ $secondary: #151B29;
 
     .container {
         display: flex;
+
+        @media screen and (max-width: 30rem) {
+            flex-direction: column;
+            padding: 2rem;
+        }
+
+        .affiliated__header {
+            @media screen and (max-width: 30rem) {
+                margin: 0 0 var(--gap) 0;
+            }
+
+            .gradient__card {
+                @media screen and (max-width: 30rem) {
+                    width: 100%;
+                    max-width: 100%;
+                    flex: 0 0 100%;
+                    margin-right: 0;
+                }
+            }
+
+            .gradient__card-title {
+                @media screen and (max-width: 30rem) {
+                   text-align: center;
+                }
+            }
+        }
     }
+}
+
+.comments__container {
+    width: 100%;
 }
 
 .comment-reply-title {
@@ -1216,6 +1391,11 @@ $secondary: #151B29;
 .comment-respond {
     margin-top: 3rem;
     margin-left: 2rem;
+    
+    @media screen and (max-width: 30rem) {
+        margin-left: 0;
+    }
+    
 }
 
 .must-log-in {

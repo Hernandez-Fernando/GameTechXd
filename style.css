@@ -610,10 +610,22 @@ p {
   padding: 0 8rem;
   margin-top: 3rem;
 }
+@media screen and (max-width: 30rem) {
+  .article__body h2 {
+    padding: 0 3rem;
+    font-size: 2.7rem;
+  }
+}
 .article__body ul {
   padding: 0 8rem;
   margin-top: 3rem;
   font-size: 2rem;
+}
+@media screen and (max-width: 30rem) {
+  .article__body ul {
+    padding: 0 3rem;
+    font-size: 1.8rem;
+  }
 }
 .article__body img {
   margin-top: 3rem;
@@ -800,6 +812,114 @@ p {
   transition: opacity 0.2s ease;
 }
 
+.wp-polls-form .wp-polls-ul li {
+  margin-bottom: 1.8rem;
+  margin-top: 3rem;
+}
+.wp-polls-form .wp-polls-ul li .pollbar {
+  height: 1.7rem;
+  border: none;
+  background-color: var(--color-cta);
+  margin-bottom: 2rem;
+}
+.wp-polls-form p {
+  font-size: 1.8rem;
+  color: var(--color-grey);
+  margin-bottom: 3rem;
+  text-align: left;
+}
+.wp-polls-form p:nth-last-child(2) {
+  margin-bottom: 2rem;
+}
+.wp-polls-form p:last-of-type {
+  text-align: center;
+}
+.wp-polls-form label {
+  font-size: 1.8rem;
+  color: var(--color-white);
+  position: absolute;
+  padding-left: 3.8rem;
+  cursor: pointer;
+  margin-top: -3rem;
+}
+.wp-polls-form input[type=radio] {
+  /* Hide the native radio button but keep it accessible */
+  -webkit-appearance: none; /* For iOS < 15 */
+  appearance: none;
+  background-color: var(--color-primary);
+  margin: 0; /* Remove default margin */
+  /* Set basic size and shape */
+  width: 3rem;
+  height: 3rem;
+  border: 3px solid var(--color-accent);
+  border-radius: 50%; /* Creates a circle */
+  /* Center the custom dot */
+  display: grid;
+  place-content: center;
+}
+.wp-polls-form {
+  /* Style the inner dot using ::before */
+}
+.wp-polls-form input[type=radio]::before {
+  content: "";
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 50%;
+  transform: scale(0); /* Hide the dot by default */
+  transition: 120ms transform ease-in-out; /* Add a smooth animation */
+  box-shadow: inset 1em 1em var(--color-accent); /* Use box-shadow for color that prints well */
+}
+.wp-polls-form {
+  /* Show the dot when the input is checked */
+}
+.wp-polls-form input[type=radio]:checked::before {
+  transform: scale(1);
+}
+.wp-polls-form input[type=button] {
+  border: none;
+  color: var(--color-white);
+  background-color: var(--color-cta);
+  border-radius: 5px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  cursor: pointer;
+}
+.wp-polls-form p a {
+  color: var(--color-accent);
+  font-size: 1.6rem;
+  text-decoration: none;
+}
+.wp-polls-form .wp-polls .pollbar {
+  height: 2rem;
+  border: none;
+  background-color: var(--color-cta);
+}
+
+.wp-polls-ans .wp-polls-ul {
+  margin-top: 2rem;
+  margin-left: 0;
+}
+.wp-polls-ans .wp-polls-ul li {
+  margin-bottom: 1.8rem;
+  margin-top: 3rem;
+  font-size: 1.6rem;
+}
+.wp-polls-ans .wp-polls-ul li .pollbar {
+  height: 1.7rem;
+  border: none;
+  background-color: var(--color-cta);
+  margin-bottom: 2rem;
+}
+.wp-polls-ans p {
+  margin-bottom: 2rem;
+}
+.wp-polls-ans p a {
+  color: var(--color-accent);
+}
+
 .newsletter__grid {
   display: grid;
   grid-template-columns: 2fr 3fr;
@@ -897,6 +1017,7 @@ p {
   width: 100%;
   padding: 0;
   max-height: 24rem;
+  min-height: 24rem;
   border-radius: 10px;
   background-color: var(--color-secondary);
   display: grid;
@@ -1278,6 +1399,34 @@ p {
 .comments__section .container {
   display: flex;
 }
+@media screen and (max-width: 30rem) {
+  .comments__section .container {
+    flex-direction: column;
+    padding: 2rem;
+  }
+}
+@media screen and (max-width: 30rem) {
+  .comments__section .container .affiliated__header {
+    margin: 0 0 var(--gap) 0;
+  }
+}
+@media screen and (max-width: 30rem) {
+  .comments__section .container .affiliated__header .gradient__card {
+    width: 100%;
+    max-width: 100%;
+    flex: 0 0 100%;
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 30rem) {
+  .comments__section .container .affiliated__header .gradient__card-title {
+    text-align: center;
+  }
+}
+
+.comments__container {
+  width: 100%;
+}
 
 .comment-reply-title {
   font-size: 2.5rem;
@@ -1296,6 +1445,11 @@ p {
 .comment-respond {
   margin-top: 3rem;
   margin-left: 2rem;
+}
+@media screen and (max-width: 30rem) {
+  .comment-respond {
+    margin-left: 0;
+  }
 }
 
 .must-log-in a {

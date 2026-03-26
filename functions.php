@@ -192,7 +192,7 @@ add_action('init', 'gametechxd_post_types');
 // Featuring Posts
 function get_featured_posts($position, $count) {
     return new WP_Query(array(
-        'post_type' => 'post',
+        'post_type' => array('post', 'review', 'news'),
         'posts_per_page' => $count,
         'meta_query' => array(
             array(

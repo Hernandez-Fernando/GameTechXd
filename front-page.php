@@ -87,12 +87,10 @@
                     <div class="gradient__card">
                         <h2 class="gradient__card-title">Active Poll</h2>
                         <?php if ( function_exists( 'vote_poll' ) && ! in_pollarchive() ): ?>
-        <ul>
-            <li><?php get_poll();?></li>
-        </ul>
-        <?php display_polls_archive_link(); ?>
+        <?php get_poll();?>
+        <!-- <?php display_polls_archive_link(); ?> -->
 <?php endif; ?>
-                        <p class="gradient__card-text">What’s your most anticipated game of the year?</p>
+                        <!-- <p class="gradient__card-text">What’s your most anticipated game of the year?</p>
                         <form action="" class="poll">
                             <div class="poll__group">
                                 <input type="radio" name="poll" id="1" class="poll__option-input"><label for="1" class="poll__option-label"><span class="poll__option-button"></span>GTA 6</label>
@@ -114,7 +112,7 @@
                             </div>
                             <button class="poll__button">Vote! 🗳️</button>
                         </form>
-                        <a href="#" class="poll__results-button">See results</a>
+                        <a href="#" class="poll__results-button">See results</a> -->
                     </div>
                     <div class="gradient__card">
                         <h2 class="gradient__card-title">Top Articles</h2>

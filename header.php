@@ -27,7 +27,7 @@
                     </nav>
     
                     <div class="nav__social">
-                        <a href="#" class="nav__social-icon" title="Subscribe to our Youtube Channel"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://www.youtube.com/@gametechxd" class="nav__social-icon" title="Subscribe to our Youtube Channel" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
                         <a href="#" class="nav__social-icon" title="Follow Us on X!"><i class="fa-brands fa-x-twitter"></i></a>
                         <a href="#" class="nav__social-icon" title="Follow Us on BlueSky!"><i class="fa-brands fa-bluesky"></i></a>
                         <a href="#" class="nav__social-icon" title="Subscribe to our Twitch Profile!"><i class="fa-brands fa-twitch"></i></a>

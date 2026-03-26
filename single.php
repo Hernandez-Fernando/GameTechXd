@@ -9,7 +9,7 @@ while(have_posts()) {
                 <h1 class="article__title"><?php the_title(); ?></h1>
                 <p class="article__excerpt"><?php echo get_the_excerpt(); ?></p>
 
-                <video src="<?php echo get_theme_file_uri('media/doom.mp4'); ?>" controls autoplay muted></video>
+                <video src="<?php the_field('video_version') ?>" controls autoplay muted></video>
             </div>
         </section>
        <div class="custom-shape-divider-top-1773538585">
