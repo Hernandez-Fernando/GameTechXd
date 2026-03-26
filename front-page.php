@@ -55,8 +55,9 @@
                     <?php 
                         $category_id = get_cat_ID('Featuring');
                         $blogPosts = new WP_Query(array(
-                            'post_type' => 'post',
-                            'category__not_in' => array($category_id)
+                            'post_type' => array('post', 'review', 'news'),
+                            'category__not_in' => array($category_id),
+                            'post_status'    => 'publish'
                         ));
                     
                     while($blogPosts->have_posts()) { 

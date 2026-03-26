@@ -1,7 +1,7 @@
 <footer class="footer">
         <div class="container">
             <div class="footer__grid">
-                <ul class="footer__nav-list">
+                <!--<ul class="footer__nav-list">
                     <li class="footer__nav-item"><a href="<?php echo get_site_url(); ?>" class="footer__nav-link">Home</a></li>
                     <li class="footer__nav-item"><a href="" class="footer__nav-link">Articles</a></li>
                     <li class="footer__nav-item"><a href="<?php echo site_url('/blog'); ?>" class="footer__nav-link">News</a></li>
@@ -10,7 +10,11 @@
                     <li class="footer__nav-item"><a href="<?php echo site_url('/about-us'); ?>" class="footer__nav-link">About</a></li>
                     <li class="footer__nav-item"><a href="<?php echo site_url('/privacy-policy'); ?>" class="footer__nav-link">Privacy Policy</a></li>
                     <li class="footer__nav-item"><a href="" class="footer__nav-link">Affiliated Links</a></li>
-                </ul>
+                </ul> -->
+                <?php 
+                        wp_nav_menu(array(
+                            'theme_location' => 'footerNav'
+                        )); ?>
                 <div class="footer__brand">
                     <div class="footer__brand-logo">
                         <img src="<?php echo get_theme_file_uri('img/gametech-logo.png'); ?>" alt="GameTechXd Logo" class="brand__logo">

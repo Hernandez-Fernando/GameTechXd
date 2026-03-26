@@ -305,47 +305,47 @@ p {
   display: flex;
   align-items: center;
 }
-
-.nav__list {
+.nav__menu .nav__list, .nav__menu .menu {
   width: 100%;
   list-style: none;
   display: flex;
   justify-content: center;
 }
 @media screen and (max-width: 30rem) {
-  .nav__list {
+  .nav__menu .nav__list, .nav__menu .menu {
     justify-content: space-around;
   }
 }
-
-.nav__item {
+.nav__menu .nav__item, .nav__menu .menu-item {
   text-transform: uppercase;
   font-size: 2rem;
   margin: 0 3rem;
 }
 @media screen and (max-width: 30rem) {
-  .nav__item {
+  .nav__menu .nav__item, .nav__menu .menu-item {
     font-size: 1.7rem;
     margin: 0.5rem 1rem;
   }
 }
 @media screen and (min-width: 30rem) and (max-width: 67rem) {
-  .nav__item {
+  .nav__menu .nav__item, .nav__menu .menu-item {
     font-size: 1.7rem;
   }
 }
-
-.nav__link {
+.nav__menu .nav__link, .nav__menu .menu-item a {
   text-decoration: none;
   color: var(--color-white);
   cursor: pointer;
   transition: all 0.5s ease;
 }
-.nav__link:hover, .nav__link:focus {
+.nav__menu .nav__link:hover, .nav__menu .nav__link:focus, .nav__menu .menu-item a:hover, .nav__menu .menu-item a:focus {
   color: var(--color-cta);
 }
-.nav__link:active, .nav__link.active {
+.nav__menu .nav__link:active, .nav__menu .nav__link.active, .nav__menu .menu-item a:active, .nav__menu .menu-item a.active {
   color: var(--color-accent);
+}
+.nav__menu .current-menu-item a, .nav__menu .current-menu-parent {
+  border-bottom: 2px solid var(--color-accent);
 }
 
 .nav__social {
@@ -1199,16 +1199,16 @@ p {
     grid-template-columns: 1fr;
   }
 }
-.footer__nav-list {
+.footer__nav-list, .footer #menu-footer-menu {
   column-count: 2;
   column-gap: 2rem;
   list-style-type: none;
   display: block;
 }
-.footer__nav-item {
+.footer__nav-item, .footer #menu-footer-menu .menu-item {
   margin-bottom: 2rem;
 }
-.footer__nav-link {
+.footer__nav-link, .footer #menu-footer-menu .menu-item a {
   font-size: 1.8rem;
   text-decoration: none;
   color: var(--color-white);
@@ -1216,7 +1216,7 @@ p {
   cursor: pointer;
   transition: color 0.5s ease;
 }
-.footer__nav-link:hover, .footer__nav-link:focus {
+.footer__nav-link:hover, .footer__nav-link:focus, .footer #menu-footer-menu .menu-item a:hover, .footer #menu-footer-menu .menu-item a:focus {
   color: var(--color-cta);
 }
 .footer__brand {

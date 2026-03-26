@@ -14,12 +14,16 @@
                         </a>
                     </div>
                     <nav class="nav__menu">
-                        <ul class="nav__list">
+                        <?php 
+                        wp_nav_menu(array(
+                            'theme_location' => 'mainHeader'
+                        )); ?>
+                        <!--<ul class="nav__list">
                             <li class="nav__item"><a href="#" class="nav__link">Articles</a></li>
                             <li class="nav__item"><a href="single.html" class="nav__link">News</a></li>
                             <li class="nav__item"><a href="#" class="nav__link">Reviews</a></li>
                             <li class="nav__item"><a href="#" class="nav__link">Tips & Guides</a></li>
-                        </ul>
+                        </ul> -->
                     </nav>
     
                     <div class="nav__social">
